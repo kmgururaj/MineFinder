@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RedGateTechInterview;
 using System;
 
 namespace MineResultTest
 {
     [TestClass]
-    public class UnitTest1
+    public class MineResultTest
     {
         [TestMethod]
         public void Test_MineResults_3X3()
@@ -16,7 +16,7 @@ namespace MineResultTest
                 { ".", "*", "." },
                 { ".", ".", "." }
             };
-            var result = MineResult.GetMineResults(arr);
+            var result = new MineResult(arr).GetMineResults();
             Assert.AreEqual(@"
 12*
 1*2
@@ -34,7 +34,7 @@ namespace MineResultTest
                 { ".", "*", ".", "." },
                 { ".", ".", ".", "." }
             };
-            var result = MineResult.GetMineResults(arr);
+            var result = new MineResult(arr).GetMineResults();
             Assert.AreEqual(@"
 12*1
 1*20
