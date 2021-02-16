@@ -18,22 +18,20 @@ namespace RedGateTechInterview
         public string GetMineResults()
         {
             var resultString = new StringBuilder();
-            int maxRowIndex = arrInternal.GetUpperBound(0) + 1;
-
             //For each rows
-            for (int row = 0; row <= arrInternal.GetUpperBound(0); row++)
+            for (int yAxis = 0; yAxis <= arrInternal.GetUpperBound(0); yAxis++)
             {
                 resultString.AppendLine();
                 //for each columns
-                for (int column = 0; column <= arrInternal.GetUpperBound(1); column++)
+                for (int xAxis = 0; xAxis <= arrInternal.GetUpperBound(1); xAxis++)
                 {
-                    if (arrInternal[row, column] == "*")
+                    if (arrInternal[yAxis, xAxis] == "*")
                     {
                         resultString.Append("*");
                         continue;
                     }
 
-                    int count = GetMineCountPerCell(maxRowIndex, row, column);
+                    int count = GetMineCountPerCell(yAxis, xAxis);
 
                     resultString.Append(count.ToString());
 
@@ -46,17 +44,21 @@ namespace RedGateTechInterview
         /// Get Mine Count Per Cell
         /// </summary>
         /// <param name="maxRowIndex">Max Row Index</param>
-        /// <param name="currentRow">current cell row index</param>
+        /// <param name="yAxis">current cell row index</param>
         /// <param name="currentColumn">current cell column index</param>
         /// <returns></returns>
-        private int GetMineCountPerCell(int maxRowIndex, int currentRow, int currentColumn)
+        private int GetMineCountPerCell(int yAxis, int xAxis)
         {
-            int count = 0;
+            var countForTopRows = GetCountForTopRows(yAxis, xAxis);
+            var countForBottomRows = GetCountForBottomRows(yAxis, xAxis);
+            var countRigtCell = GetCountRigtCell(yAxis, xAxis);
+            var countLeftCell = GetCountLeftCell(yAxis, xAxis);
 
-            count += GetCountForTopRows(maxRowIndex, currentRow, currentColumn);
-            count += GetCountForBottomRows(maxRowIndex, currentRow, currentColumn);
-            count += GetCountRigtCell(maxRowIndex, currentRow, currentColumn);
-            count += GetCountLeftCell(currentRow, currentColumn);
+            int count = 0;
+            count += countForTopRows;
+            count += countForBottomRows;
+            count += countRigtCell;
+            count += countLeftCell;
 
             return count;
         }
@@ -64,14 +66,14 @@ namespace RedGateTechInterview
         /// <summary>
         /// Left cell mine count
         /// </summary>
-        /// <param name="currentRow">Current Row</param>
-        /// <param name="currentColumn">Current Column</param>
+        /// <param name="yAxis">Current Row</param>
+        /// <param name="xAxis">Current Column</param>
         /// <returns>Mine count</returns>
-        private int GetCountLeftCell(int currentRow, int currentColumn)
+        private int GetCountLeftCell(int yAxis, int xAxis)
         {
             int count = 0;
-            var leftX = currentRow - 1;
-            if (leftX >= 0 && arrInternal[leftX, currentColumn] == "*")
+            var leftAxisModifiedX = xAxis - 1;
+            if (leftAxisModifiedX >= 0 && arrInternal[yAxis, leftAxisModifiedX] == "*")
             {
                 count += 1;
             }
@@ -83,15 +85,15 @@ namespace RedGateTechInterview
         /// Get Count Rigt Cell
         /// </summary>
         /// <param name="maxRowIndex">Max Row Index</param>
-        /// <param name="curretRow">Curret Row</param>
-        /// <param name="currentColumn">Current Column</param>
+        /// <param name="yAxis">Curret Row</param>
+        /// <param name="yAxis">Current Column</param>
         /// <returns>Count of mines</returns>
-        private int GetCountRigtCell(int maxRowIndex, int curretRow, int currentColumn)
+        private int GetCountRigtCell(int yAxis, int xAxis)
         {
             int count = 0;
 
-            var rightX = curretRow + 1;
-            if (rightX < maxRowIndex && arrInternal[rightX, currentColumn] == "*")
+            var rightAxisModifiedX = xAxis + 1;
+            if (rightAxisModifiedX <= arrInternal.GetUpperBound(1) && arrInternal[yAxis, rightAxisModifiedX] == "*")
             {
                 count += 1;
             }
@@ -103,30 +105,30 @@ namespace RedGateTechInterview
         /// Get Count For Bottom Rows
         /// </summary>
         /// <param name="maxRowIndex">Max Row Index</param>
-        /// <param name="currentRow">Current Row</param>
-        /// <param name="currentColumn">Current Column</param>
+        /// <param name="yAxis">Current Row</param>
+        /// <param name="xAxis">Current Column</param>
         /// <returns>Count</returns>
-        private int GetCountForBottomRows(int maxRowIndex, int currentRow, int currentColumn)
+        private int GetCountForBottomRows(int yAxis, int xAxis)
         {
             int count = 0;
-            var bottomY = currentColumn + 1;
-            if (bottomY < maxRowIndex)
+            var bottomAxisModifiedY = yAxis + 1;
+            if (bottomAxisModifiedY <= arrInternal.GetUpperBound(0))
             {
                 //bottom
-                if (arrInternal[currentRow, bottomY] == "*")
+                if (arrInternal[bottomAxisModifiedY, xAxis] == "*")
                 {
                     count += 1;
                 }
 
 
-                var bottomRightX = currentRow + 1;
-                if (bottomRightX < maxRowIndex && arrInternal[bottomRightX, bottomY] == "*")
+                var bottomAxisRightModifiedX = xAxis + 1;
+                if (bottomAxisRightModifiedX <= arrInternal.GetUpperBound(1) && arrInternal[bottomAxisModifiedY, bottomAxisRightModifiedX] == "*")
                 {
                     count += 1;
                 }
 
-                var bottomLeftX = currentRow - 1;
-                if (bottomLeftX >= 0 && arrInternal[bottomLeftX, bottomY] == "*")
+                var bottomAxisLeft = xAxis - 1;
+                if (bottomAxisLeft >= 0 && arrInternal[bottomAxisModifiedY, bottomAxisLeft] == "*")
                 {
                     count += 1;
                 }
@@ -139,31 +141,31 @@ namespace RedGateTechInterview
         /// Get Count For Top Rows
         /// </summary>
         /// <param name="maxRowIndex">Max Row Index</param>
-        /// <param name="currentRow">Current Row</param>
-        /// <param name="currentColumn">Current Column</param>
+        /// <param name="yAxis">Current Row</param>
+        /// <param name="xAxis">Current Column</param>
         /// <returns>Count</returns>
-        private int GetCountForTopRows(int maxRowIndex, int currentRow, int currentColumn)
+        private int GetCountForTopRows(int yAxis, int xAxis)
         {
             int count = 0;
-            var topY = currentColumn - 1;
-            if (topY >= 0)
+            var topAxisModifiedY = yAxis - 1;
+            if (topAxisModifiedY >= 0)
             {
                 //top
-                if (arrInternal[currentRow, topY] == "*")
+                if (arrInternal[topAxisModifiedY, xAxis] == "*")
                 {
                     count += 1;
                 }
 
                 //topright
-                var topRightX = currentRow + 1;
-                if (topRightX < maxRowIndex && arrInternal[topRightX, topY] == "*")
+                var topAxisRightModifiedX = xAxis + 1;
+                if (topAxisRightModifiedX <= arrInternal.GetUpperBound(1) && arrInternal[topAxisModifiedY, topAxisRightModifiedX] == "*")
                 {
                     count += 1;
                 }
 
                 //topLeft
-                var topLeftX = currentRow - 1;
-                if (topLeftX >= 0 && arrInternal[topLeftX, currentRow] == "*")
+                var topAxisLeftModifiedX = xAxis - 1;
+                if (topAxisLeftModifiedX >= 0 && arrInternal[topAxisModifiedY, topAxisLeftModifiedX] == "*")
                 {
                     count += 1;
                 }
