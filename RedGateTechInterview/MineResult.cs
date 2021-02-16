@@ -42,6 +42,13 @@ namespace RedGateTechInterview
             return resultString.ToString();
         }
 
+        /// <summary>
+        /// Get Mine Count Per Cell
+        /// </summary>
+        /// <param name="maxRowIndex">Max Row Index</param>
+        /// <param name="currentRow">current cell row index</param>
+        /// <param name="currentColumn">current cell column index</param>
+        /// <returns></returns>
         private int GetMineCountPerCell(int maxRowIndex, int currentRow, int currentColumn)
         {
             int count = 0;
@@ -54,11 +61,17 @@ namespace RedGateTechInterview
             return count;
         }
 
-        private int GetCountLeftCell(int row, int column)
+        /// <summary>
+        /// Left cell mine count
+        /// </summary>
+        /// <param name="currentRow">Current Row</param>
+        /// <param name="currentColumn">Current Column</param>
+        /// <returns>Mine count</returns>
+        private int GetCountLeftCell(int currentRow, int currentColumn)
         {
             int count = 0;
-            var leftX = row - 1;
-            if (leftX >= 0 && arrInternal[leftX, column] == "*")
+            var leftX = currentRow - 1;
+            if (leftX >= 0 && arrInternal[leftX, currentColumn] == "*")
             {
                 count += 1;
             }
@@ -66,6 +79,13 @@ namespace RedGateTechInterview
             return count;
         }
 
+        /// <summary>
+        /// Get Count Rigt Cell
+        /// </summary>
+        /// <param name="maxRowIndex">Max Row Index</param>
+        /// <param name="curretRow">Curret Row</param>
+        /// <param name="currentColumn">Current Column</param>
+        /// <returns>Count of mines</returns>
         private int GetCountRigtCell(int maxRowIndex, int curretRow, int currentColumn)
         {
             int count = 0;
@@ -79,6 +99,13 @@ namespace RedGateTechInterview
             return count;
         }
 
+        /// <summary>
+        /// Get Count For Bottom Rows
+        /// </summary>
+        /// <param name="maxRowIndex">Max Row Index</param>
+        /// <param name="currentRow">Current Row</param>
+        /// <param name="currentColumn">Current Column</param>
+        /// <returns>Count</returns>
         private int GetCountForBottomRows(int maxRowIndex, int currentRow, int currentColumn)
         {
             int count = 0;
@@ -108,6 +135,13 @@ namespace RedGateTechInterview
             return count;
         }
 
+        /// <summary>
+        /// Get Count For Top Rows
+        /// </summary>
+        /// <param name="maxRowIndex">Max Row Index</param>
+        /// <param name="currentRow">Current Row</param>
+        /// <param name="currentColumn">Current Column</param>
+        /// <returns>Count</returns>
         private int GetCountForTopRows(int maxRowIndex, int currentRow, int currentColumn)
         {
             int count = 0;
