@@ -5,9 +5,16 @@ namespace RedGateTechInterview
     public class MineResult
     {
         private readonly string[,] arrInternal;
+
+        private readonly int upperBoundarrX;
+
+        private readonly int upperBoundarrY;
+
         public MineResult(string[,] arr)
         {
             arrInternal = arr;
+            upperBoundarrY = arrInternal.GetUpperBound(0);
+            upperBoundarrX = arrInternal.GetUpperBound(1);
         }
 
         /// <summary>
@@ -19,11 +26,11 @@ namespace RedGateTechInterview
         {
             var resultString = new StringBuilder();
             //For each rows
-            for (int yAxis = 0; yAxis <= arrInternal.GetUpperBound(0); yAxis++)
+            for (int yAxis = 0; yAxis <= upperBoundarrY; yAxis++)
             {
                 resultString.AppendLine();
                 //for each columns
-                for (int xAxis = 0; xAxis <= arrInternal.GetUpperBound(1); xAxis++)
+                for (int xAxis = 0; xAxis <= upperBoundarrX; xAxis++)
                 {
                     if (arrInternal[yAxis, xAxis] == "*")
                     {
@@ -93,7 +100,7 @@ namespace RedGateTechInterview
             int count = 0;
 
             var rightAxisModifiedX = xAxis + 1;
-            if (rightAxisModifiedX <= arrInternal.GetUpperBound(1) && arrInternal[yAxis, rightAxisModifiedX] == "*")
+            if (rightAxisModifiedX <= upperBoundarrX && arrInternal[yAxis, rightAxisModifiedX] == "*")
             {
                 count += 1;
             }
@@ -122,7 +129,7 @@ namespace RedGateTechInterview
 
 
                 var bottomAxisRightModifiedX = xAxis + 1;
-                if (bottomAxisRightModifiedX <= arrInternal.GetUpperBound(1) && arrInternal[bottomAxisModifiedY, bottomAxisRightModifiedX] == "*")
+                if (bottomAxisRightModifiedX <= upperBoundarrX && arrInternal[bottomAxisModifiedY, bottomAxisRightModifiedX] == "*")
                 {
                     count += 1;
                 }
@@ -158,7 +165,7 @@ namespace RedGateTechInterview
 
                 //topright
                 var topAxisRightModifiedX = xAxis + 1;
-                if (topAxisRightModifiedX <= arrInternal.GetUpperBound(1) && arrInternal[topAxisModifiedY, topAxisRightModifiedX] == "*")
+                if (topAxisRightModifiedX <= upperBoundarrX && arrInternal[topAxisModifiedY, topAxisRightModifiedX] == "*")
                 {
                     count += 1;
                 }
