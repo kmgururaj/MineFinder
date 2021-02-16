@@ -10,11 +10,11 @@ namespace MineResultTest
         [TestMethod]
         public void Test_MineResults_3X3()
         {
-            var arr = new string[,]
+            var arr = new char[,]
             {
-                { ".", ".", "*" },
-                { ".", "*", "." },
-                { ".", ".", "." }
+                { '.', '.', '*' },
+                { '.', '*', '.' },
+                { '.', '.', '.' }
             };
             var result = new MineResult(arr).GetMineResults();
             Assert.AreEqual(@"
@@ -28,11 +28,11 @@ namespace MineResultTest
         [TestMethod]
         public void Test_MineResults_3X4()
         {
-            var arr = new string[,]
+            var arr = new char[,]
             {
-                { ".", ".", "*", "." },
-                { ".", "*", ".", "." },
-                { ".", ".", ".", "." }
+                { '.', '.', '*', '.' },
+                { '.', '*', '.', '.' },
+                { '.', '.', '.', '.' }
             };
             var result = new MineResult(arr).GetMineResults();
             Assert.AreEqual(@"
@@ -44,13 +44,13 @@ namespace MineResultTest
         [TestMethod]
         public void Test_MineResults_5X4()
         {
-            var arr = new string[,]
+            var arr = new char[,]
             {
-                { ".", ".", "*", "." },
-                { ".", ".", "*", "." },
-                { ".", ".", "*", "." },
-                { ".", "*", ".", "." },
-                { ".", ".", ".", "." }
+                { '.', '.', '*', '.' },
+                { '.', '.', '*', '.' },
+                { '.', '.', '*', '.' },
+                { '.', '*', '.', '.' },
+                { '.', '.', '.', '.' }
             };
             var result = new MineResult(arr).GetMineResults();
             Assert.AreEqual(@"

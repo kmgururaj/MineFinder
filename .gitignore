@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/MineResultTest/bin/Debug
+/MineResultTest/obj/Debug
+/packages
+/RedGateTechInterview/bin/Debug
+/RedGateTechInterview/obj/Debug
+/RedGateTechInterview/obj/Release

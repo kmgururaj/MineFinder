@@ -4,16 +4,19 @@ namespace RedGateTechInterview
 {
     public class MineResult
     {
-        private readonly string[,] arrInternal;
+        private readonly char[,] arrInternal;
 
         private readonly int upperBoundarrX;
 
         private readonly int upperBoundarrY;
 
-        public MineResult(string[,] arr)
+        private const char MineChar = '*';
+
+        public MineResult(char[,] arr)
         {
             arrInternal = arr;
             upperBoundarrY = arrInternal.GetUpperBound(0);
+
             upperBoundarrX = arrInternal.GetUpperBound(1);
         }
 
@@ -32,9 +35,9 @@ namespace RedGateTechInterview
                 //for each columns
                 for (int xAxis = 0; xAxis <= upperBoundarrX; xAxis++)
                 {
-                    if (arrInternal[yAxis, xAxis] == "*")
+                    if (arrInternal[yAxis, xAxis] == MineChar)
                     {
-                        resultString.Append("*");
+                        resultString.Append(MineChar);
                         continue;
                     }
 
@@ -80,7 +83,7 @@ namespace RedGateTechInterview
         {
             int count = 0;
             var leftAxisModifiedX = xAxis - 1;
-            if (leftAxisModifiedX >= 0 && arrInternal[yAxis, leftAxisModifiedX] == "*")
+            if (leftAxisModifiedX >= 0 && arrInternal[yAxis, leftAxisModifiedX] == MineChar)
             {
                 count += 1;
             }
@@ -100,7 +103,7 @@ namespace RedGateTechInterview
             int count = 0;
 
             var rightAxisModifiedX = xAxis + 1;
-            if (rightAxisModifiedX <= upperBoundarrX && arrInternal[yAxis, rightAxisModifiedX] == "*")
+            if (rightAxisModifiedX <= upperBoundarrX && arrInternal[yAxis, rightAxisModifiedX] == MineChar)
             {
                 count += 1;
             }
@@ -122,20 +125,20 @@ namespace RedGateTechInterview
             if (bottomAxisModifiedY <= arrInternal.GetUpperBound(0))
             {
                 //bottom
-                if (arrInternal[bottomAxisModifiedY, xAxis] == "*")
+                if (arrInternal[bottomAxisModifiedY, xAxis] == MineChar)
                 {
                     count += 1;
                 }
 
 
                 var bottomAxisRightModifiedX = xAxis + 1;
-                if (bottomAxisRightModifiedX <= upperBoundarrX && arrInternal[bottomAxisModifiedY, bottomAxisRightModifiedX] == "*")
+                if (bottomAxisRightModifiedX <= upperBoundarrX && arrInternal[bottomAxisModifiedY, bottomAxisRightModifiedX] == MineChar)
                 {
                     count += 1;
                 }
 
                 var bottomAxisLeft = xAxis - 1;
-                if (bottomAxisLeft >= 0 && arrInternal[bottomAxisModifiedY, bottomAxisLeft] == "*")
+                if (bottomAxisLeft >= 0 && arrInternal[bottomAxisModifiedY, bottomAxisLeft] == MineChar)
                 {
                     count += 1;
                 }
@@ -158,21 +161,21 @@ namespace RedGateTechInterview
             if (topAxisModifiedY >= 0)
             {
                 //top
-                if (arrInternal[topAxisModifiedY, xAxis] == "*")
+                if (arrInternal[topAxisModifiedY, xAxis] == MineChar)
                 {
                     count += 1;
                 }
 
                 //topright
                 var topAxisRightModifiedX = xAxis + 1;
-                if (topAxisRightModifiedX <= upperBoundarrX && arrInternal[topAxisModifiedY, topAxisRightModifiedX] == "*")
+                if (topAxisRightModifiedX <= upperBoundarrX && arrInternal[topAxisModifiedY, topAxisRightModifiedX] == MineChar)
                 {
                     count += 1;
                 }
 
                 //topLeft
                 var topAxisLeftModifiedX = xAxis - 1;
-                if (topAxisLeftModifiedX >= 0 && arrInternal[topAxisModifiedY, topAxisLeftModifiedX] == "*")
+                if (topAxisLeftModifiedX >= 0 && arrInternal[topAxisModifiedY, topAxisLeftModifiedX] == MineChar)
                 {
                     count += 1;
                 }
