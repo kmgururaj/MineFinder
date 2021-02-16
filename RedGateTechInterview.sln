@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedGateTechInterview", "RedGateTechInterview\RedGateTechInterview.csproj", "{8703638E-B887-4BD0-8523-453D1C56D8D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineResultTest", "MineResultTest\MineResultTest.csproj", "{D2B45970-05AB-447F-8CDD-91E83CD86F55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8703638E-B887-4BD0-8523-453D1C56D8D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8703638E-B887-4BD0-8523-453D1C56D8D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8703638E-B887-4BD0-8523-453D1C56D8D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8703638E-B887-4BD0-8523-453D1C56D8D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B45970-05AB-447F-8CDD-91E83CD86F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B45970-05AB-447F-8CDD-91E83CD86F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B45970-05AB-447F-8CDD-91E83CD86F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B45970-05AB-447F-8CDD-91E83CD86F55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED7DDB69-242F-4191-A0FF-DA1533E29666}
+	EndGlobalSection
+EndGlobal
