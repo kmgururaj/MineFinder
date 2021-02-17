@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Guru.MineSweeper;
 
 namespace Guru.MineSweeper.Test
 {

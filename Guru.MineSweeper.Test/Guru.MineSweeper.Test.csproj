@@ -56,7 +56,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RedGateTechInterview\Guru.MineSweeper.csproj">
+    <ProjectReference Include="..\Guru.MineSweeper\Guru.MineSweeper.csproj">
       <Project>{8703638e-b887-4bd0-8523-453d1c56d8d2}</Project>
       <Name>Guru.MineSweeper</Name>
     </ProjectReference>
