@@ -38,4 +38,4 @@ Example output (for the above input)
 Solution:
 MineResult.cs Logic to find number of mines. 
 
-MineResultTest: UT project
+Guru.MineSweeper.Test: UT project
