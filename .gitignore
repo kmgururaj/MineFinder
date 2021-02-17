@@ -3,14 +3,9 @@
 ################################################################################
 
 /.vs
-/MineResultTest/bin/Debug
-/MineResultTest/obj/Debug
 /packages
-/RedGateTechInterview/bin/Debug
-/RedGateTechInterview/obj/Debug
-/RedGateTechInterview/obj/Release
-/MineResultTest/obj/Release
-/Guru.MineSweeper/bin/Debug
+/TestResults
+/Guru.MineSweeper/bin
 /Guru.MineSweeper/obj
-/Guru.MineSweeper.Test/bin/Debug
+/Guru.MineSweeper.Test/bin
 /Guru.MineSweeper.Test/obj
