@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace RedGateTechInterview
+namespace Guru.MineSweeper
 {
     public class MineResult
     {
@@ -16,7 +16,6 @@ namespace RedGateTechInterview
         {
             arrInternal = arr;
             upperBoundarrY = arrInternal.GetUpperBound(0);
-
             upperBoundarrX = arrInternal.GetUpperBound(1);
         }
 
@@ -44,9 +43,9 @@ namespace RedGateTechInterview
                     int count = GetMineCountPerCell(yAxis, xAxis);
 
                     resultString.Append(count.ToString());
-
                 }
             }
+
             return resultString.ToString();
         }
 
@@ -64,11 +63,7 @@ namespace RedGateTechInterview
             var countRigtCell = GetCountRigtCell(yAxis, xAxis);
             var countLeftCell = GetCountLeftCell(yAxis, xAxis);
 
-            int count = 0;
-            count += countForTopRows;
-            count += countForBottomRows;
-            count += countRigtCell;
-            count += countLeftCell;
+            int count = countForTopRows + countForBottomRows + countRigtCell + countLeftCell;
 
             return count;
         }

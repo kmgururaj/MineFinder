@@ -1,6 +1,6 @@
 using System;
 
-namespace RedGateTechInterview
+namespace Guru.MineSweeper
 {
     class Program
     {
